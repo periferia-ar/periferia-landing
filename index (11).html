@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Periferia · Consultora de opinión pública</title>
+<meta name="description" content="Periferia · Consultora de opinión pública independiente. Estudios sobre la coyuntura política, económica y social.">
+<meta property="og:title" content="Periferia">
+<meta property="og:description" content="Consultora de opinión pública independiente. Estudios sobre la coyuntura política, económica y social.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://periferia.ar">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F1E8;
+  --paper-2: #EDE7D9;
+  --paper-3: #FBF8F1;
+  --ink: #3B312A;
+  --ink-soft: #6B5F54;
+  --moss: #6F7F6F;
+  --rust: #EABAAF;
+  --rust-deep: #C68574;
+  --sky: #AEDCE8;
+  --sky-deep: #7CAEBE;
+  --line: #D9D2C2;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* GRAIN OVERLAY */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.23 0 0 0 0 0.19 0 0 0 0 0.16 0 0 0 0.045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+}
+
+/* BACKGROUND ORBIT — la idea conceptual de "periferia" */
+.bg-orbit {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140vmin; height: 140vmin;
+  border: 1.5px solid var(--line);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.55;
+}
+.bg-orbit::after {
+  content: '';
+  position: absolute;
+  width: 22px; height: 22px;
+  background: var(--rust-deep);
+  border-radius: 50%;
+  top: -11px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px var(--paper);
+  animation: orbit 80s linear infinite;
+  transform-origin: 0 70vmin;
+}
+.bg-orbit-2 {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95vmin; height: 95vmin;
+  border: 1px dashed var(--line);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.4;
+  animation: rotate-slow 120s linear infinite;
+}
+@keyframes orbit {
+  from { transform: rotate(0deg) translateY(0); }
+  to { transform: rotate(360deg) translateY(0); }
+}
+@keyframes rotate-slow {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* CONTAINER */
+.wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+.tag-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--rust-deep);
+  background: rgba(198,133,116,0.08);
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rust-deep);
+}
+.tag-status::before {
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--rust-deep);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.tag-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+
+/* HERO */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 0;
+  animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.isotipo {
+  width: 110px; height: 110px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 38px;
+  animation: fade-in 1.5s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.isotipo::after {
+  content: '';
+  position: absolute;
+  width: 26px; height: 26px;
+  background: var(--rust-deep);
+  border-radius: 50%;
+  top: -13px; right: 14px;
+  box-shadow: 0 4px 14px rgba(198,133,116,0.3);
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.logo-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: clamp(72px, 14vw, 168px);
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: var(--ink);
+  margin-bottom: 6px;
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  animation: fade-up 1.2s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.logo-name .pdot {
+  display: inline-block;
+  width: 0.085em; height: 0.085em;
+  border-radius: 50%;
+  background: var(--rust-deep);
+  margin-left: 0.05em;
+  transform: translateY(-0.06em);
+}
+
+.sub-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 56px;
+  animation: fade-up 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 620px;
+  margin-bottom: 16px;
+  animation: fade-up 1.2s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.tagline em {
+  font-style: italic;
+  color: var(--rust-deep);
+  font-weight: 400;
+}
+.tagline-2 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 540px;
+  margin-bottom: 48px;
+  animation: fade-up 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.coming-soon-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 56px;
+  animation: fade-up 1.2s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.coming-line {
+  width: 60px;
+  height: 1px;
+  background: var(--ink-soft);
+  opacity: 0.4;
+}
+.coming-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* OLA ACTIVA BLOCK */
+.ola-block {
+  background: var(--paper-3);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px 32px;
+  max-width: 480px;
+  width: 100%;
+  text-align: left;
+  animation: fade-up 1.2s 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  position: relative;
+  overflow: hidden;
+}
+.ola-block::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle at top right, rgba(174,220,232,0.35), transparent 70%);
+}
+.ola-kicker {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sky-deep);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ola-kicker::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--sky-deep);
+  border-radius: 50%;
+}
+.ola-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.ola-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.ola-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1.5px solid var(--ink);
+}
+.ola-cta:hover {
+  background: var(--paper);
+  color: var(--ink);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(59,49,42,0.18);
+}
+.ola-cta .arrow {
+  transition: transform 0.2s ease;
+}
+.ola-cta:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* FOOTER */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  margin-top: 64px;
+  animation: fade-up 1.2s 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.foot-left, .foot-right {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--moss);
+  text-transform: uppercase;
+}
+.foot-links {
+  display: flex;
+  gap: 22px;
+}
+.foot-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+}
+.foot-links a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--rust-deep);
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .wrap { padding: 24px 20px; }
+  .header { flex-direction: column; gap: 14px; align-items: flex-start; }
+  .hero { padding: 32px 0; }
+  .isotipo { width: 84px; height: 84px; margin-bottom: 28px; }
+  .isotipo::after { width: 20px; height: 20px; top: -10px; right: 10px; }
+  .sub-label { letter-spacing: 0.32em; margin-bottom: 40px; }
+  .coming-soon-block { margin-bottom: 40px; }
+  .ola-block { padding: 22px 24px; }
+  .footer { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 48px; padding-top: 24px; }
+  .foot-links { gap: 18px; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- BG ORBITS -->
+<div class="bg-orbit-2"></div>
+<div class="bg-orbit"></div>
+
+<div class="wrap">
+
+  <header class="header">
+    <div class="tag-status">En construcción</div>
+    <div class="tag-meta">v 0.1 · 2026</div>
+  </header>
+
+  <main class="hero">
+
+    <div class="isotipo"></div>
+
+    <h1 class="logo-name">periferia<span class="pdot"></span></h1>
+
+    <div class="sub-label">Consultora</div>
+
+    <p class="tagline">
+      Consultora de opinión pública <em>independiente</em>.
+    </p>
+    <p class="tagline-2">
+      Estudios sistemáticos sobre la coyuntura política, económica y social. Publicamos los resultados como dato abierto.
+    </p>
+
+    <div class="coming-soon-block">
+      <div class="coming-line"></div>
+      <div class="coming-text">Sitio en construcción</div>
+      <div class="coming-line"></div>
+    </div>
+
+    <div class="ola-block">
+      <div class="ola-kicker">Estudio activo · Ola 01</div>
+      <h2 class="ola-title">La Rioja · Junio 2026</h2>
+      <p class="ola-desc">Estudio de opinión pública sobre la situación política, económica y social de la provincia. Participá en menos de 5 minutos.</p>
+      <a href="https://pulso-consultora.github.io/periferia/" class="ola-cta">
+        Participar en el estudio
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="foot-left">© 2026 · Periferia</div>
+    <div class="foot-links">
+      <a href="https://instagram.com/periferia.consultora" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:vamos@periferia.ar">vamos@periferia.ar</a>
+    </div>
+    <div class="foot-right">Periferia · 2026</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
