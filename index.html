@@ -3,447 +3,738 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Periferia · Consultora de opinión pública</title>
-<meta name="description" content="Periferia · Consultora de opinión pública independiente. Estudios sobre la coyuntura política, económica y social.">
-<meta property="og:title" content="Periferia">
-<meta property="og:description" content="Consultora de opinión pública independiente. Estudios sobre la coyuntura política, económica y social.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://periferia.ar">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<title>Periferia Consultora — Investigación social y de mercado</title>
+<meta name="description" content="Desde los márgenes se observa la totalidad. Observación, recolección, análisis e interpretación de fenómenos sociales y de mercado para tomar mejores decisiones.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..500;1,6..72,200..500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --paper: #F5F1E8;
-  --paper-2: #EDE7D9;
-  --paper-3: #FBF8F1;
-  --ink: #3B312A;
-  --ink-soft: #6B5F54;
-  --moss: #6F7F6F;
-  --rust: #EABAAF;
-  --rust-deep: #C68574;
-  --sky: #AEDCE8;
-  --sky-deep: #7CAEBE;
-  --line: #D9D2C2;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* GRAIN OVERLAY */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.23 0 0 0 0 0.19 0 0 0 0 0.16 0 0 0 0.045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.55;
+/* ============================================================
+   PERIFERIA CONSULTORA — Sistema de diseño (Manual v1.0)
+   ============================================================ */
+:root{
+  /* Colores base */
+  --espresso:#342D28;
+  --crema:#F4EEE3;
+  --rosa:#C58A77;
+  /* Neutros */
+  --tinta:#2B2521;
+  --panel:#EDE5D7;
+  --rosa-claro:#D6A99D;
+  --taupe:#A99E90;
+  /* Derivados de superficie oscura */
+  --crema-80:rgba(244,238,227,.8);
+  --crema-60:rgba(244,238,227,.6);
+  --crema-40:rgba(244,238,227,.4);
+  --crema-15:rgba(244,238,227,.15);
+  --tinta-60:rgba(43,37,33,.62);
+  --tinta-40:rgba(43,37,33,.4);
+  --tinta-12:rgba(43,37,33,.12);
+  /* Tipografía */
+  --serif:'Newsreader', Georgia, serif;
+  --sans:'Poppins', system-ui, sans-serif;
+  /* Layout */
+  --max-w:1280px;
+  --pad-x:clamp(20px, 5vw, 64px);
 }
 
-/* BACKGROUND ORBIT — la idea conceptual de "periferia" */
-.bg-orbit {
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 140vmin; height: 140vmin;
-  border: 1.5px solid var(--line);
-  border-radius: 50%;
-  z-index: 0;
-  opacity: 0.55;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
-.bg-orbit::after {
-  content: '';
-  position: absolute;
-  width: 22px; height: 22px;
-  background: var(--rust-deep);
-  border-radius: 50%;
-  top: -11px; left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 0 0 4px var(--paper);
-  animation: orbit 80s linear infinite;
-  transform-origin: 0 70vmin;
+body{
+  font-family:var(--sans);
+  font-weight:300;
+  background:var(--crema);
+  color:var(--tinta);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
-.bg-orbit-2 {
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 95vmin; height: 95vmin;
-  border: 1px dashed var(--line);
-  border-radius: 50%;
-  z-index: 0;
-  opacity: 0.4;
-  animation: rotate-slow 120s linear infinite;
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max-w);margin:0 auto;padding-left:var(--pad-x);padding-right:var(--pad-x)}
+
+/* ---------- Utilidades tipográficas ---------- */
+.eyebrow{
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--rosa);
 }
-@keyframes orbit {
-  from { transform: rotate(0deg) translateY(0); }
-  to { transform: rotate(360deg) translateY(0); }
+.h-display{
+  font-family:var(--serif);
+  font-weight:300;
+  line-height:1.08;
+  letter-spacing:-.01em;
 }
-@keyframes rotate-slow {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+.h-display em{font-style:italic;color:var(--rosa)}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  transition:background-color .3s ease, border-color .3s ease;
+  border-bottom:1px solid transparent;
+}
+.site-header[data-scrolled="true"]{
+  background:rgba(244,238,227,.96);
+  border-bottom:.5px solid var(--tinta-12);
+  backdrop-filter:blur(6px);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:20px;padding-bottom:20px;
+}
+/* Lockup del logo */
+.logo-lockup{display:flex;align-items:center;gap:12px}
+.logo-mark{width:34px;height:34px;flex:none}
+.logo-text{display:flex;flex-direction:column;line-height:1.05}
+.logo-word{
+  font-family:var(--sans);font-weight:500;font-size:20px;
+  letter-spacing:.01em;color:var(--crema);transition:color .3s ease;
+}
+.logo-desc{
+  font-family:var(--sans);font-weight:400;font-size:8px;
+  letter-spacing:.42em;text-transform:uppercase;
+  color:var(--crema-60);transition:color .3s ease;margin-top:3px;
+}
+.site-header[data-scrolled="true"] .logo-word{color:var(--tinta)}
+.site-header[data-scrolled="true"] .logo-desc{color:var(--tinta-60)}
+.logo-mark .ring{stroke:var(--crema);transition:stroke .3s ease}
+.logo-mark .dot{fill:var(--rosa)}
+.site-header[data-scrolled="true"] .logo-mark .ring{stroke:var(--tinta)}
+
+/* Navegación */
+.main-nav ul{display:flex;gap:40px;list-style:none}
+.main-nav a{
+  font-family:var(--sans);font-weight:400;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--crema-80);transition:color .25s ease;
+  padding:6px 0;position:relative;
+}
+.main-nav a::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--rosa);transition:width .25s ease;
+}
+.main-nav a:hover{color:var(--rosa)}
+.main-nav a:hover::after{width:100%}
+.site-header[data-scrolled="true"] .main-nav a{color:var(--tinta)}
+.site-header[data-scrolled="true"] .main-nav a:hover{color:var(--rosa)}
+
+/* Botón menú móvil */
+.nav-toggle{
+  display:none;background:none;border:none;cursor:pointer;
+  width:40px;height:40px;align-items:center;justify-content:center;
+}
+.nav-toggle span,.nav-toggle span::before{
+  display:block;width:22px;height:1.5px;background:var(--crema);
+  transition:background .3s ease;position:relative;
+}
+.nav-toggle span::before{content:'';position:absolute;top:-7px}
+.site-header[data-scrolled="true"] .nav-toggle span,
+.site-header[data-scrolled="true"] .nav-toggle span::before{background:var(--tinta)}
+
+@media (max-width:820px){
+  .main-nav{
+    position:fixed;inset:0;background:var(--espresso);
+    display:none;align-items:center;justify-content:center;
+  }
+  .main-nav.open{display:flex}
+  .main-nav ul{flex-direction:column;gap:32px;text-align:center}
+  .main-nav a{font-size:15px;color:var(--crema)!important}
+  .nav-toggle{display:flex;z-index:60}
+  .site-header:has(.main-nav.open) .nav-toggle span{background:var(--crema)}
+  .site-header:has(.main-nav.open) .nav-toggle span::before{background:var(--crema)}
 }
 
-/* CONTAINER */
-.wrap {
-  position: relative;
-  z-index: 2;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 32px 28px;
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  background:var(--espresso);
+  color:var(--crema);
+  min-height:100svh;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding-top:120px;padding-bottom:96px;
+}
+.hero-orbits{
+  position:absolute;top:50%;right:-12%;transform:translateY(-50%);
+  width:min(58vw,780px);height:auto;pointer-events:none;
+}
+@media (max-width:820px){
+  .hero-orbits{right:-40%;width:110vw;opacity:.7}
+}
+.hero-content{position:relative;z-index:2;max-width:720px}
+.hero h1{
+  font-size:clamp(42px, 6.5vw, 84px);
+  margin-top:28px;
+}
+.hero-lede{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(20px, 2.4vw, 28px);
+  color:var(--rosa-claro);
+  margin-top:36px;
+}
+.hero-body{
+  font-size:15px;font-weight:300;
+  color:var(--crema-80);
+  max-width:520px;margin-top:20px;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  margin-top:48px;
+  font-family:var(--sans);font-weight:400;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--crema);
+  border:1px solid var(--crema-40);
+  padding:16px 32px;
+  transition:border-color .25s ease,color .25s ease;
+}
+.hero-cta .cta-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--rosa);flex:none;
+  transition:transform .25s ease;
+}
+.hero-cta:hover{border-color:var(--rosa);color:var(--rosa)}
+.hero-cta:hover .cta-dot{transform:translateX(4px)}
+
+/* ============================================================
+   SECCIONES — base
+   ============================================================ */
+.section{padding-top:120px;padding-bottom:120px}
+.section-head{max-width:640px}
+.section-head h2{
+  font-size:clamp(32px, 4vw, 52px);
+  margin-top:24px;
+}
+.section-head p{margin-top:20px;font-size:15px;color:var(--tinta-60)}
+
+/* ============================================================
+   QUIÉNES SOMOS
+   ============================================================ */
+#quienes-somos{background:var(--crema)}
+.qs-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  align-items:center;margin-top:24px;
+}
+@media (max-width:900px){.qs-grid{grid-template-columns:1fr;gap:56px}}
+
+/* Diagrama de disciplinas orbitando */
+.orbit-diagram{position:relative;aspect-ratio:1/1;max-width:460px;margin:0 auto;width:100%}
+.orbit-diagram svg{width:100%;height:100%}
+.orbit-label{
+  position:absolute;transform:translate(-50%,-50%);
+  font-family:var(--sans);font-weight:400;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-60);
+  white-space:nowrap;
 }
 
-/* HEADER */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0;
+/* Proceso */
+.process{
+  margin-top:88px;
+  border-top:.5px solid var(--tinta-12);
+  padding-top:56px;
 }
-.tag-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
-  border-radius: 100px;
-  border: 1px solid var(--rust-deep);
-  background: rgba(198,133,116,0.08);
-  font-family: 'DM Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--rust-deep);
+.process-track{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
+  margin-top:40px;position:relative;
 }
-.tag-status::before {
-  content: '';
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--rust-deep);
-  animation: pulse 2s ease-in-out infinite;
+.process-track::before{
+  content:'';position:absolute;top:5px;left:calc(12.5% ); right:calc(12.5%);
+  height:.5px;background:var(--tinta-12);
 }
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+@media (max-width:760px){
+  .process-track{grid-template-columns:1fr;gap:36px}
+  .process-track::before{display:none}
 }
-.tag-meta {
-  font-family: 'DM Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--moss);
+.process-step{text-align:center;position:relative}
+@media (max-width:760px){.process-step{text-align:left;display:flex;gap:18px;align-items:baseline}}
+.step-dot{
+  width:10px;height:10px;border-radius:50%;
+  border:1.5px solid var(--tinta);background:var(--crema);
+  margin:0 auto 20px;position:relative;z-index:1;flex:none;
 }
+.process-step:last-child .step-dot{background:var(--rosa);border-color:var(--rosa)}
+@media (max-width:760px){.step-dot{margin:0}}
+.step-name{
+  font-family:var(--serif);font-weight:400;font-size:22px;color:var(--tinta);
+}
+.step-desc{font-size:13px;color:var(--tinta-60);margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto}
+@media (max-width:760px){.step-desc{margin-left:0}}
 
-/* HERO */
-.hero {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 48px 0;
-  animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* ============================================================
+   INFORMES
+   ============================================================ */
+#informes{background:var(--panel)}
+.informes-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-top:64px;
 }
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@media (max-width:980px){.informes-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.informes-grid{grid-template-columns:1fr}}
+.informe-card{
+  background:var(--espresso);color:var(--crema);
+  padding:40px 32px 32px;
+  display:flex;flex-direction:column;gap:0;
+  min-height:340px;position:relative;overflow:hidden;
+  transition:transform .3s ease;
 }
+.informe-card:hover{transform:translateY(-4px)}
+.informe-card .card-orbit{
+  position:absolute;top:-60px;right:-60px;width:180px;height:180px;
+  border:.5px solid var(--crema-15);border-radius:50%;pointer-events:none;
+}
+.informe-card .card-orbit::after{
+  content:'';position:absolute;width:8px;height:8px;border-radius:50%;
+  background:var(--rosa);left:14%;bottom:14%;
+}
+.informe-tag{
+  font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  font-weight:400;color:var(--rosa-claro);
+}
+.informe-dato{
+  font-family:var(--serif);font-weight:200;
+  font-size:clamp(56px,6vw,76px);line-height:1;
+  margin-top:24px;
+}
+.informe-dato sub{
+  font-size:.38em;vertical-align:baseline;font-weight:300;
+}
+.informe-context{
+  font-size:14px;color:var(--crema-80);margin-top:16px;max-width:260px;
+}
+.informe-meta{
+  margin-top:auto;padding-top:28px;
+  font-size:11px;letter-spacing:.08em;color:var(--crema-40);
+  border-top:.5px solid var(--crema-15);
+}
+.informe-card.card-invert{background:var(--crema);color:var(--tinta);border:.5px solid var(--tinta-12)}
+.informe-card.card-invert .informe-context{color:var(--tinta-60)}
+.informe-card.card-invert .informe-meta{color:var(--tinta-40);border-top-color:var(--tinta-12)}
+.informe-card.card-invert .card-orbit{border-color:var(--tinta-12)}
+.informes-note{
+  margin-top:40px;font-size:13px;color:var(--tinta-60);
+}
+.informes-note a{color:var(--rosa);border-bottom:1px solid var(--rosa)}
 
-.isotipo {
-  width: 110px; height: 110px;
-  border: 3px solid var(--ink);
-  border-radius: 50%;
-  position: relative;
-  margin-bottom: 38px;
-  animation: fade-in 1.5s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* ============================================================
+   NOTAS
+   ============================================================ */
+#notas{background:var(--crema)}
+.notas-list{margin-top:64px;border-top:.5px solid var(--tinta-12)}
+.nota{
+  display:grid;grid-template-columns:140px 1fr auto;gap:40px;
+  align-items:baseline;
+  padding:36px 0;border-bottom:.5px solid var(--tinta-12);
+  transition:padding-left .25s ease;
 }
-.isotipo::after {
-  content: '';
-  position: absolute;
-  width: 26px; height: 26px;
-  background: var(--rust-deep);
-  border-radius: 50%;
-  top: -13px; right: 14px;
-  box-shadow: 0 4px 14px rgba(198,133,116,0.3);
+.nota:hover{padding-left:12px}
+@media (max-width:760px){
+  .nota{grid-template-columns:1fr;gap:10px}
 }
-@keyframes fade-in {
-  from { opacity: 0; transform: scale(0.85); }
-  to { opacity: 1; transform: scale(1); }
+.nota-fecha{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:400;color:var(--taupe);
 }
+.nota-titulo{
+  font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.4vw,26px);
+  line-height:1.3;color:var(--tinta);
+}
+.nota-extracto{font-size:13px;color:var(--tinta-60);margin-top:8px;max-width:560px}
+.nota-arrow{
+  font-family:var(--serif);font-size:22px;color:var(--rosa);
+  transition:transform .25s ease;
+}
+.nota:hover .nota-arrow{transform:translateX(6px)}
+@media (max-width:760px){.nota-arrow{display:none}}
 
-.logo-name {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: clamp(72px, 14vw, 168px);
-  letter-spacing: -0.045em;
-  line-height: 0.95;
-  color: var(--ink);
-  margin-bottom: 6px;
-  position: relative;
-  display: inline-flex;
-  align-items: baseline;
-  animation: fade-up 1.2s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* ============================================================
+   CONTACTO
+   ============================================================ */
+#contacto{background:var(--panel)}
+.contacto-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:24px;
 }
-.logo-name .pdot {
-  display: inline-block;
-  width: 0.085em; height: 0.085em;
-  border-radius: 50%;
-  background: var(--rust-deep);
-  margin-left: 0.05em;
-  transform: translateY(-0.06em);
+@media (max-width:900px){.contacto-grid{grid-template-columns:1fr;gap:48px}}
+.contacto-info p{font-size:15px;color:var(--tinta-60);margin-top:20px;max-width:400px}
+.contacto-mail{
+  display:inline-block;margin-top:32px;
+  font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);
+  color:var(--tinta);border-bottom:1px solid var(--rosa);
+  padding-bottom:2px;transition:color .25s ease;
 }
+.contacto-mail:hover{color:var(--rosa)}
+.contact-form{display:flex;flex-direction:column;gap:28px}
+.field label{
+  display:block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  font-weight:400;color:var(--tinta-60);margin-bottom:10px;
+}
+.field input,.field textarea{
+  width:100%;background:transparent;border:none;
+  border-bottom:.5px solid var(--tinta-40);
+  font-family:var(--sans);font-weight:300;font-size:15px;color:var(--tinta);
+  padding:8px 0;outline:none;border-radius:0;
+  transition:border-color .25s ease;
+}
+.field input:focus,.field textarea:focus{border-bottom-color:var(--rosa)}
+.field textarea{resize:vertical;min-height:96px}
+.form-submit{
+  align-self:flex-start;
+  display:inline-flex;align-items:center;gap:14px;
+  background:var(--espresso);color:var(--crema);
+  border:1px solid var(--espresso);cursor:pointer;
+  font-family:var(--sans);font-weight:400;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:16px 32px;margin-top:8px;
+  transition:background .25s ease,color .25s ease;
+}
+.form-submit .cta-dot{width:8px;height:8px;border-radius:50%;background:var(--rosa);flex:none}
+.form-submit:hover{background:transparent;color:var(--tinta)}
 
-.sub-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 56px;
-  animation: fade-up 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{
+  background:var(--espresso);color:var(--crema);
+  border-top:.5px solid var(--crema-15);
+  position:relative;overflow:hidden;
 }
+.footer-orbit{
+  position:absolute;bottom:-180px;left:-120px;width:420px;height:420px;
+  border:.5px solid var(--crema-15);border-radius:50%;pointer-events:none;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:56px;
+  padding-top:96px;padding-bottom:64px;position:relative;
+}
+@media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:48px}}
+@media (max-width:560px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand .logo-word{color:var(--crema)}
+.footer-brand .logo-desc{color:var(--crema-60)}
+.footer-tagline{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:17px;color:var(--crema-60);margin-top:24px;max-width:280px;
+}
+.footer-col h3{
+  font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  font-weight:400;color:var(--crema-40);
+}
+.footer-col ul{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.footer-col a{font-size:14px;color:var(--crema-80);transition:color .25s ease}
+.footer-col a:hover{color:var(--rosa)}
+.footer-bottom{
+  display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;
+  border-top:.5px solid var(--crema-15);
+  padding-top:28px;padding-bottom:36px;position:relative;
+}
+.footer-bottom p{font-size:12px;color:var(--crema-40)}
+.footer-social{display:flex;gap:28px;list-style:none}
+.footer-social a{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:400;color:var(--crema-60);transition:color .25s ease;
+}
+.footer-social a:hover{color:var(--rosa)}
 
-.tagline {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  font-size: clamp(18px, 2.2vw, 24px);
-  line-height: 1.45;
-  color: var(--ink);
-  max-width: 620px;
-  margin-bottom: 16px;
-  animation: fade-up 1.2s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* Accesibilidad */
+:focus-visible{outline:2px solid var(--rosa);outline-offset:3px}
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--espresso);color:var(--crema);
+  padding:12px 20px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
 }
-.tagline em {
-  font-style: italic;
-  color: var(--rust-deep);
-  font-weight: 400;
-}
-.tagline-2 {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  font-size: clamp(15px, 1.6vw, 17px);
-  line-height: 1.6;
-  color: var(--ink-soft);
-  max-width: 540px;
-  margin-bottom: 48px;
-  animation: fade-up 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.coming-soon-block {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 56px;
-  animation: fade-up 1.2s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.coming-line {
-  width: 60px;
-  height: 1px;
-  background: var(--ink-soft);
-  opacity: 0.4;
-}
-.coming-text {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-/* OLA ACTIVA BLOCK */
-.ola-block {
-  background: var(--paper-3);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 28px 32px;
-  max-width: 480px;
-  width: 100%;
-  text-align: left;
-  animation: fade-up 1.2s 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  position: relative;
-  overflow: hidden;
-}
-.ola-block::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 80px; height: 80px;
-  background: radial-gradient(circle at top right, rgba(174,220,232,0.35), transparent 70%);
-}
-.ola-kicker {
-  font-family: 'DM Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--sky-deep);
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.ola-kicker::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--sky-deep);
-  border-radius: 50%;
-}
-.ola-title {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-  letter-spacing: -0.015em;
-  margin-bottom: 6px;
-  color: var(--ink);
-}
-.ola-desc {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.55;
-  margin-bottom: 16px;
-  font-weight: 300;
-}
-.ola-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 20px;
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: 100px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  border: 1.5px solid var(--ink);
-}
-.ola-cta:hover {
-  background: var(--paper);
-  color: var(--ink);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(59,49,42,0.18);
-}
-.ola-cta .arrow {
-  transition: transform 0.2s ease;
-}
-.ola-cta:hover .arrow {
-  transform: translateX(3px);
-}
-
-/* FOOTER */
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
-  margin-top: 64px;
-  animation: fade-up 1.2s 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.foot-left, .foot-right {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--moss);
-  text-transform: uppercase;
-}
-.foot-links {
-  display: flex;
-  gap: 22px;
-}
-.foot-links a {
-  color: var(--ink-soft);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 1px;
-  transition: all 0.2s ease;
-  letter-spacing: 0.12em;
-  font-size: 11px;
-}
-.foot-links a:hover {
-  color: var(--ink);
-  border-bottom-color: var(--rust-deep);
-}
-
-/* RESPONSIVE */
-@media (max-width: 640px) {
-  .wrap { padding: 24px 20px; }
-  .header { flex-direction: column; gap: 14px; align-items: flex-start; }
-  .hero { padding: 32px 0; }
-  .isotipo { width: 84px; height: 84px; margin-bottom: 28px; }
-  .isotipo::after { width: 20px; height: 20px; top: -10px; right: 10px; }
-  .sub-label { letter-spacing: 0.32em; margin-bottom: 40px; }
-  .coming-soon-block { margin-bottom: 40px; }
-  .ola-block { padding: 22px 24px; }
-  .footer { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 48px; padding-top: 24px; }
-  .foot-links { gap: 18px; flex-wrap: wrap; }
-}
+.skip-link:focus{left:0}
 </style>
 </head>
 <body>
 
-<!-- BG ORBITS -->
-<div class="bg-orbit-2"></div>
-<div class="bg-orbit"></div>
+<a class="skip-link" href="#main">Ir al contenido</a>
 
-<div class="wrap">
+<!-- ==================== HEADER ==================== -->
+<header class="site-header" data-scrolled="false">
+  <div class="wrap header-inner">
+    <a href="#" class="logo-lockup" aria-label="Periferia Consultora — inicio">
+      <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle class="ring" cx="19" cy="21" r="13" fill="none" stroke-width="2.6"/>
+        <circle class="dot" cx="29.5" cy="12.5" r="5"/>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-word">periferia</span>
+        <span class="logo-desc">Consultora</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="main-nav" id="nav" aria-label="Principal">
+      <ul>
+        <li><a href="#quienes-somos">Quiénes somos</a></li>
+        <li><a href="#informes">Informes</a></li>
+        <li><a href="#notas">Notas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <header class="header">
-    <div class="tag-status">En construcción</div>
-    <div class="tag-meta">v 0.1 · 2026</div>
-  </header>
+<main id="main">
 
-  <main class="hero">
+<!-- ==================== HERO ==================== -->
+<section class="hero" aria-label="Presentación">
+  <svg class="hero-orbits" viewBox="0 0 800 800" fill="none" aria-hidden="true">
+    <circle cx="400" cy="400" r="360" stroke="#F4EEE3" stroke-opacity=".14" stroke-width="1"/>
+    <circle cx="400" cy="400" r="250" stroke="#F4EEE3" stroke-opacity=".12" stroke-width="1" stroke-dasharray="2 7"/>
+    <circle cx="400" cy="400" r="140" stroke="#F4EEE3" stroke-opacity=".18" stroke-width="1"/>
+    <circle cx="654" cy="145" r="9" fill="#C58A77"/>
+    <circle cx="163" cy="513" r="5" fill="#C58A77" fill-opacity=".7"/>
+    <circle cx="519" cy="316" r="4" fill="#F4EEE3" fill-opacity=".45"/>
+    <circle cx="286" cy="620" r="3" fill="#F4EEE3" fill-opacity=".3"/>
+  </svg>
+  <div class="wrap hero-content">
+    <p class="eyebrow">Investigación social y de mercado</p>
+    <h1 class="h-display">Desde los márgenes<br>se observa <em>la totalidad</em>.</h1>
+    <p class="hero-body">Observación, recolección, análisis e interpretación de fenómenos sociales y de mercado, con un solo objetivo: tomar mejores decisiones.</p>
+    <a href="#informes" class="hero-cta"><span class="cta-dot" aria-hidden="true"></span>Ver informes</a>
+  </div>
+</section>
 
-    <div class="isotipo"></div>
-
-    <h1 class="logo-name">periferia<span class="pdot"></span></h1>
-
-    <div class="sub-label">Consultora</div>
-
-    <p class="tagline">
-      Consultora de opinión pública <em>independiente</em>.
-    </p>
-    <p class="tagline-2">
-      Estudios sistemáticos sobre la coyuntura política, económica y social. Publicamos los resultados como dato abierto.
-    </p>
-
-    <div class="coming-soon-block">
-      <div class="coming-line"></div>
-      <div class="coming-text">Sitio en construcción</div>
-      <div class="coming-line"></div>
+<!-- ==================== QUIÉNES SOMOS ==================== -->
+<section class="section" id="quienes-somos" aria-label="Quiénes somos">
+  <div class="wrap">
+    <div class="qs-grid">
+      <div>
+        <p class="eyebrow">01 · Quiénes somos</p>
+        <h2 class="h-display">Cuatro disciplinas,<br>un mismo <em>objeto</em>.</h2>
+        <p style="margin-top:24px;font-size:15px;color:var(--tinta-60);max-width:460px">
+          Periferia es una consultora de investigación social y de opinión pública.
+          Sociología, antropología, politología y economía orbitan un mismo fenómeno:
+          lo miramos desde los bordes, ahí donde el dato y la experiencia se vuelven significado.
+        </p>
+      </div>
+      <div class="orbit-diagram" role="img" aria-label="Diagrama: sociología, antropología, politología y economía orbitando un anillo central">
+        <svg viewBox="0 0 460 460" fill="none">
+          <circle cx="230" cy="230" r="170" stroke="#2B2521" stroke-opacity=".16" stroke-width="1"/>
+          <circle cx="230" cy="230" r="110" stroke="#2B2521" stroke-opacity=".14" stroke-width="1" stroke-dasharray="2 7"/>
+          <circle cx="230" cy="230" r="52" stroke="#2B2521" stroke-width="2.4"/>
+          <circle cx="270" cy="196" r="10" fill="#C58A77"/>
+          <!-- Puntos de disciplinas sobre la órbita exterior -->
+          <circle cx="230" cy="60"  r="6" fill="#2B2521"/>
+          <circle cx="400" cy="230" r="6" fill="#2B2521"/>
+          <circle cx="230" cy="400" r="6" fill="#2B2521"/>
+          <circle cx="60"  cy="230" r="6" fill="#2B2521"/>
+        </svg>
+        <span class="orbit-label" style="left:50%;top:6%">Sociología</span>
+        <span class="orbit-label" style="left:87%;top:44%">Antropología</span>
+        <span class="orbit-label" style="left:50%;top:93%">Politología</span>
+        <span class="orbit-label" style="left:13%;top:44%">Economía</span>
+      </div>
     </div>
 
-    <div class="ola-block">
-      <div class="ola-kicker">Estudio activo · Ola 01</div>
-      <h2 class="ola-title">La Rioja · Junio 2026</h2>
-      <p class="ola-desc">Estudio de opinión pública sobre la situación política, económica y social de la provincia. Participá en menos de 5 minutos.</p>
-      <a href="https://periferia-ar.github.io/periferia/" class="ola-cta">
-        Participar en el estudio
-        <span class="arrow">→</span>
+    <div class="process">
+      <p class="eyebrow">El proceso</p>
+      <div class="process-track">
+        <div class="process-step">
+          <span class="step-dot" aria-hidden="true"></span>
+          <div><h3 class="step-name">Observación</h3>
+          <p class="step-desc">Identificar el fenómeno en su contexto, sin recortarlo.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="step-dot" aria-hidden="true"></span>
+          <div><h3 class="step-name">Recolección</h3>
+          <p class="step-desc">Datos cuantitativos y cualitativos con rigor metodológico.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="step-dot" aria-hidden="true"></span>
+          <div><h3 class="step-name">Análisis</h3>
+          <p class="step-desc">Ponderación, validación y modelado de la evidencia.</p></div>
+        </div>
+        <div class="process-step">
+          <span class="step-dot" aria-hidden="true"></span>
+          <div><h3 class="step-name">Interpretación</h3>
+          <p class="step-desc">El dato se vuelve significado: insumo para decidir.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INFORMES ==================== -->
+<section class="section" id="informes" aria-label="Informes">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">02 · Informes</p>
+      <h2 class="h-display">Evidencia <em>publicada</em>.</h2>
+      <p>Estudios de opinión pública con metodología transparente: ficha técnica, muestra y fecha en cada pieza.</p>
+    </div>
+    <div class="informes-grid">
+      <article class="informe-card">
+        <span class="card-orbit" aria-hidden="true"></span>
+        <p class="informe-tag">Dato destacado</p>
+        <p class="informe-dato">68<sub>%</sub></p>
+        <p class="informe-context">prioriza la confianza en la marca por encima del precio.</p>
+        <p class="informe-meta">Percepciones del consumo · n=1.200 · 2026</p>
+      </article>
+      <article class="informe-card card-invert">
+        <span class="card-orbit" aria-hidden="true"></span>
+        <p class="informe-tag">Estudio cuali-cuantitativo</p>
+        <p class="informe-dato" style="font-size:clamp(30px,3vw,40px);line-height:1.15;margin-top:28px">Percepciones del consumo</p>
+        <p class="informe-context">La elección se reorganiza en torno a la confianza y la cercanía de marca.</p>
+        <p class="informe-meta">Informe completo · 2026</p>
+      </article>
+      <article class="informe-card">
+        <span class="card-orbit" aria-hidden="true"></span>
+        <p class="informe-tag">Próximamente</p>
+        <p class="informe-dato" style="font-size:clamp(30px,3vw,40px);line-height:1.15;margin-top:28px">Clima de opinión provincial</p>
+        <p class="informe-context">Primera ola del estudio multi-ola de opinión pública.</p>
+        <p class="informe-meta">Encuesta CAWI · en campo</p>
+      </article>
+    </div>
+    <p class="informes-note">¿Buscás un estudio a medida? <a href="#contacto">Escribinos</a>.</p>
+  </div>
+</section>
+
+<!-- ==================== NOTAS ==================== -->
+<section class="section" id="notas" aria-label="Notas">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">03 · Notas</p>
+      <h2 class="h-display">Lecturas desde <em>el borde</em>.</h2>
+      <p>Apuntes metodológicos, contexto y análisis en formato breve.</p>
+    </div>
+    <div class="notas-list">
+      <a class="nota" href="#">
+        <span class="nota-fecha">Jun 2026</span>
+        <span>
+          <span class="nota-titulo">Por qué el indeciso no es un votante “tibio”</span>
+          <span class="nota-extracto" style="display:block">Los votantes sin decisión suelen compartir un rasgo estructural: la falta de anclaje partidario previo, no la falta de interés.</span>
+        </span>
+        <span class="nota-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="nota" href="#">
+        <span class="nota-fecha">May 2026</span>
+        <span>
+          <span class="nota-titulo">Encuestas online: el sesgo de captación existe (y se corrige)</span>
+          <span class="nota-extracto" style="display:block">Qué es la ponderación por raking y por qué una muestra digital bien tratada puede ser tan rigurosa como una presencial.</span>
+        </span>
+        <span class="nota-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="nota" href="#">
+        <span class="nota-fecha">Abr 2026</span>
+        <span>
+          <span class="nota-titulo">Leer una ficha técnica en tres minutos</span>
+          <span class="nota-extracto" style="display:block">Muestra, margen de error y fecha de campo: la guía mínima para saber si una encuesta merece tu atención.</span>
+        </span>
+        <span class="nota-arrow" aria-hidden="true">→</span>
       </a>
     </div>
+  </div>
+</section>
 
-  </main>
-
-  <footer class="footer">
-    <div class="foot-left">© 2026 · Periferia</div>
-    <div class="foot-links">
-      <a href="https://instagram.com/periferia.consultora" target="_blank" rel="noopener">Instagram</a>
-      <a href="mailto:vamos@periferia.ar">vamos@periferia.ar</a>
+<!-- ==================== CONTACTO ==================== -->
+<section class="section" id="contacto" aria-label="Contacto">
+  <div class="wrap">
+    <div class="contacto-grid">
+      <div class="contacto-info">
+        <p class="eyebrow">04 · Contacto</p>
+        <h2 class="h-display">Hablemos del <em>fenómeno</em>.</h2>
+        <p>Estudios de opinión pública, investigación de mercado y análisis a medida. Contanos qué necesitás medir.</p>
+        <a class="contacto-mail" href="mailto:vamos@periferia.ar">vamos@periferia.ar</a>
+      </div>
+      <!-- Nota: conectar el action del form al endpoint (Apps Script) antes de publicar -->
+      <form class="contact-form" action="#" method="post">
+        <div class="field">
+          <label for="f-nombre">Nombre</label>
+          <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-mensaje">Mensaje</label>
+          <textarea id="f-mensaje" name="mensaje" required></textarea>
+        </div>
+        <button type="submit" class="form-submit"><span class="cta-dot" aria-hidden="true"></span>Enviar mensaje</button>
+      </form>
     </div>
-    <div class="foot-right">Periferia · 2026</div>
-  </footer>
+  </div>
+</section>
 
-</div>
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+  <span class="footer-orbit" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo-lockup" aria-label="Periferia Consultora — inicio">
+          <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="19" cy="21" r="13" fill="none" stroke="#F4EEE3" stroke-width="2.6"/>
+            <circle cx="29.5" cy="12.5" r="5" fill="#C58A77"/>
+          </svg>
+          <span class="logo-text">
+            <span class="logo-word">periferia</span>
+            <span class="logo-desc">Consultora</span>
+          </span>
+        </a>
+        <p class="footer-tagline">Una identidad para mirar desde la periferia.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Secciones</h3>
+        <ul>
+          <li><a href="#quienes-somos">Quiénes somos</a></li>
+          <li><a href="#informes">Informes</a></li>
+          <li><a href="#notas">Notas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="mailto:vamos@periferia.ar">vamos@periferia.ar</a></li>
+          <li><a href="#contacto">Formulario</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Metodología</a></li>
+          <li><a href="#">Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Periferia Consultora. Todos los derechos reservados.</p>
+      <ul class="footer-social">
+        <li><a href="#" rel="noreferrer">Instagram</a></li>
+        <li><a href="#" rel="noreferrer">X</a></li>
+        <li><a href="#" rel="noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Header: transparente sobre el hero → sólido crema al hacer scroll
+const header = document.querySelector('.site-header');
+const onScroll = () => header.setAttribute('data-scrolled', window.scrollY > 40 ? 'true' : 'false');
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// Menú móvil
+const toggle = document.querySelector('.nav-toggle');
+const nav = document.getElementById('nav');
+toggle.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}));
+</script>
 
 </body>
 </html>
