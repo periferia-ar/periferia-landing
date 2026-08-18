@@ -829,10 +829,9 @@ document.addEventListener('keydown', (e) => {
 
 // ============================================================
 // FORMULARIO DE CONTACTO → Apps Script → mail a vamos@periferia.ar
-// IMPORTANTE: reemplazar la URL de abajo por la de tu propio deploy
-// (ver apps_script_contacto.gs / instrucciones aparte)
+// Poné tu URL /exec en la constante de abajo. Nada más.
 // ============================================================
-const CONTACT_APPS_SCRIPT_URL = 'REEMPLAZAR_CON_TU_URL_DE_APPS_SCRIPT';
+const CONTACT_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxNNZ9Cs9bYIEpaJce2rNnfTEw9Kgl6SDKsJ_sOzJtPLZxOqPhsS6ImWEsQX8EZxWr/exec';
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 
@@ -840,7 +839,9 @@ if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if (CONTACT_APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbzxNNZ9Cs9bYIEpaJce2rNnfTEw9Kgl6SDKsJ_sOzJtPLZxOqPhsS6ImWEsQX8EZxWr/exec') {
+    // Sólo envía si la URL es un /exec real de Apps Script
+    const urlOk = /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(CONTACT_APPS_SCRIPT_URL);
+    if (!urlOk) {
       formStatus.dataset.state = 'error';
       formStatus.textContent = 'Formulario sin conectar todavía. Escribinos a vamos@periferia.ar mientras tanto.';
       return;
@@ -861,7 +862,7 @@ if (contactForm) {
       await fetch(CONTACT_APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload),
       });
       formStatus.dataset.state = 'success';
