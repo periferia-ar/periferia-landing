@@ -840,7 +840,7 @@ if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if (CONTACT_APPS_SCRIPT_URL === 'REEMPLAZAR_CON_TU_URL_DE_APPS_SCRIPT') {
+    if (CONTACT_APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbzxNNZ9Cs9bYIEpaJce2rNnfTEw9Kgl6SDKsJ_sOzJtPLZxOqPhsS6ImWEsQX8EZxWr/exec') {
       formStatus.dataset.state = 'error';
       formStatus.textContent = 'Formulario sin conectar todavía. Escribinos a vamos@periferia.ar mientras tanto.';
       return;
